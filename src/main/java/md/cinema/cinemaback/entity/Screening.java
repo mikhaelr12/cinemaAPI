@@ -29,6 +29,7 @@ public class Screening {
     @JoinColumn(name = "room_id", nullable = false)
     private Room room;
 
+    @Column(name = "screening_time")
     private LocalDateTime screeningTime;
 }
 
