@@ -22,7 +22,7 @@ async function login(username, password) {
             localStorage.setItem('expiresIn', data.expiresIn); // Optionally store expiry time
 
             // Redirect to the protected page (index.html or the requested page)
-            window.location.href = localStorage.getItem('returnUrl') || '/index.html'; // Using returnUrl if exists
+            window.location.href = '/index'; // Using returnUrl if exists
         } else {
             // Show error if login fails
             const errorData = await response.json();
