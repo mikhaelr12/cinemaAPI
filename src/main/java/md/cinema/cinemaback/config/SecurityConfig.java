@@ -1,6 +1,7 @@
 package md.cinema.cinemaback.config;
 
 import lombok.AllArgsConstructor;
+import md.cinema.cinemaback.service.impl.JwtServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -12,6 +13,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
 
@@ -22,7 +25,6 @@ public class SecurityConfig{
     private final AuthenticationProvider authenticationProvider;
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
-
     @Bean
     protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
@@ -30,7 +32,9 @@ public class SecurityConfig{
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**", "/register", "/login", "/css/**", "/js/**", "/images/**")
+                        .requestMatchers("/auth/**", "/register",
+                                "/login", "/css/**", "/js/**",
+                                "/images/**", "/index.html")
                         .permitAll()
                         //.requestMatchers(("")).hasRole("ADMIN")
                         .anyRequest().authenticated())
@@ -52,4 +56,5 @@ public class SecurityConfig{
 
         return source;
     }
+
 }

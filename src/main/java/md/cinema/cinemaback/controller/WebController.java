@@ -9,12 +9,16 @@ public class WebController {
     // Render registration page
     @GetMapping("/register")
     public String showRegisterPage() {
-        return "register";  // This will return register.html from templates folder
+        return "register";
     }
 
     // Render login page
     @GetMapping("/login")
     public String showLoginPage() {
-        return "login";  // This will return login.html from templates folder
+        return "login";
+    }
+    @GetMapping("/index")
+    public String showIndexPage() {
+        return "index"; // Returns index.html (if it's in resources/templates)
     }
 }

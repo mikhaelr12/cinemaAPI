@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cinema Registration</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -18,46 +17,4 @@
 </body>
 </html>
 
-
-<script>
-    document.getElementById("registerForm").addEventListener("submit", function(event) {
-        event.preventDefault();  // Prevent default form submission
-
-        // Get form data
-        const username = document.getElementById("username").value;
-        const password = document.getElementById("password").value;
-
-        // Create JSON payload for UserDTO
-        const data = {
-            username: username,
-            password: password
-        };
-
-        // Send data using Fetch API as JSON
-        fetch("/auth/register", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)  // Convert the data to JSON
-        })
-            .then(response => {
-                if (!response.ok) {
-                    // If the response is not OK, throw an error
-                    return response.json().then(errorData => {
-                        throw new Error(errorData.message || 'Registration failed');
-                    });
-                }
-                return response.json();
-            })
-            .then(data => {
-                alert("Registration successful!"); // Show success message
-                // Optionally, redirect to login or home page
-                window.location.href = "/login"; // Redirect to login page
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                alert(error.message || "Registration failed");
-            });
-    });
-</script>
+<script src="/js/regService.js"></script>
