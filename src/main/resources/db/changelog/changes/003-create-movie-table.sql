@@ -7,3 +7,7 @@ create table movies(
     genre_id bigint,
     foreign key (genre_id) references genres(id)
 );
+
+alter table  movies owner to root;
+create sequence movie_id_seq;
+alter sequence movie_id_seq owner to root;
