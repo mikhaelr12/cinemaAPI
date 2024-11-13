@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to the Cinema</title>
+</head>
+<body>
+
+<h1>Welcome to the Cinema!</h1>
+<p>Loading your dashboard...</p>
+
+<div id="error-message" style="display: none; color: red;"></div>
+
+<!--<script>-->
+<!--  // Function to display error messages-->
+<!--  function showError(message) {-->
+<!--    const errorMessageElement = document.getElementById('error-message');-->
+<!--    errorMessageElement.textContent = message;-->
+<!--    errorMessageElement.style.display = 'block';-->
+<!--  }-->
+
+<!--  // Function to fetch protected data-->
+<!--  async function fetchProtectedData() {-->
+<!--    const token = localStorage.getItem('token');-->
+<!--    if (!token) {-->
+<!--      // Redirect to login if token is missing-->
+<!--      window.location.href = '/login.html';-->
+<!--      return;-->
+<!--    }-->
+
+<!--    try {-->
+<!--      const response = await fetch('http://localhost:8080/index', {-->
+<!--        method: 'GET',-->
+<!--        headers: {-->
+<!--          'Authorization': `Bearer ${token}`-->
+<!--        }-->
+<!--      });-->
+
+<!--      if (response.ok) {-->
+<!--        const data = await response.json();-->
+<!--        console.log("Protected data loaded:", data); // Display data in the console or on the page-->
+<!--      } else if (response.status === 403) {-->
+<!--        showError('Access denied. Please log in.');-->
+<!--        setTimeout(() => window.location.href = '/login', 3000);-->
+<!--      } else {-->
+<!--        showError('Failed to load data. Please try again.');-->
+<!--      }-->
+<!--    } catch (error) {-->
+<!--      showError('An error occurred while fetching data.');-->
+<!--      console.error(error);-->
+<!--    }-->
+<!--  }-->
+
+<!--  // Fetch the protected data when the document is fully loaded-->
+<!--  document.addEventListener('DOMContentLoaded', fetchProtectedData);-->
+<!--</script>-->
+
+</body>
+</html>
