@@ -32,7 +32,8 @@ public class Movie {
     @Column(name = "image", nullable = false)
     private String image;
 
-    @Column(name = "genre_id")
-    private Long genreId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "genre_id", foreignKey = @ForeignKey(name = "FK_GENRE_MOVIE"))
+    private Genre genre;
 }
 

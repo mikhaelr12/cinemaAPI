@@ -3,14 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to the Cinema</title>
+  <title>Movies</title>
+  <link rel="stylesheet" href="/css/movie.css"> <!-- Link to your CSS file -->
 </head>
 <body>
+<header>
+  <h1>Movies List</h1>
+</header>
 
-<h1>Welcome to the Cinema!</h1>
-<p>Loading your dashboard...</p>
+<main>
+  <div id="movies-container">
+    <!-- Movies will be dynamically loaded here -->
+  </div>
+</main>
 
-<div id="error-message" style="display: none; color: red;"></div>
+<footer>
+  <p>&copy; 2024 Cinema App</p>
+</footer>
+
+<script src="/js/movies.js"></script> <!-- Link to the JavaScript file -->
+</body>
+</html>
 
 <!--<script>-->
 <!--  // Function to display error messages-->
