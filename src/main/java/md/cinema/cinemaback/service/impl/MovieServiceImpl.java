@@ -25,7 +25,7 @@ public class MovieServiceImpl implements MovieService {
                 .title(m.getTitle())
                 .description(m.getDescription())
                 .duration(m.getDuration())
-                .image("/images/" + m.getImage())
+                .image(m.getImage().startsWith("/images/") ? m.getImage() : "/images/" + m.getImage())
                 .genreName(m.getGenre().getName())
                 .build()
         ).collect(toList());

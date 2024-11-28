@@ -1,19 +1,17 @@
 package md.cinema.cinemaback.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.sql.Time;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "movies")
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Getter @Setter
+@Builder
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "movie_id_seq")
@@ -27,7 +25,7 @@ public class Movie {
     private String description;
 
     @Column(name = "duration", nullable = false)
-    private Time duration;
+    private LocalTime duration;
 
     @Column(name = "image", nullable = false)
     private String image;
