@@ -33,5 +33,8 @@ public class Screening {
 
     @Column(name = "screening_date")
     private LocalDate screeningDate;
+
+    @Column(name= "price")
+    private Double price;
 }
 

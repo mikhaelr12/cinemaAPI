@@ -36,7 +36,7 @@ public class SecurityConfig{
                         .requestMatchers("/auth/**", "/register",
                                 "/login", "/css/**", "/js/**",
                                 "/images/**", "/index", "/movies",
-                                "/screenings/**").permitAll()
+                                "/screenings/**", "/booking/**").permitAll()
                         .requestMatchers("/movie-manager/**",
                                          "/screening-manager/**",
                                          "/user-manager/**").hasRole("ADMIN")

@@ -19,6 +19,4 @@ public class ScreeningController {
     public ResponseEntity<List<ScreeningDTO>> getScreenings() {
         return ResponseEntity.ok(screeningService.getScreenings());
     }
-
-
 }

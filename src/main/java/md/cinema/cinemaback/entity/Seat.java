@@ -18,8 +18,6 @@ public class Seat {
     @SequenceGenerator(name = "seat_id_seq", sequenceName = "seat_id_seq", allocationSize = 1)
     private Long id;
 
-    @Column(name = "price")
-    private Double price;
 
     @ManyToOne
     @JoinColumn(name = "room_id", nullable = false)
