@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Time;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "movies")
@@ -24,7 +25,7 @@ public class Movie {
     private String description;
 
     @Column(name = "duration", nullable = false)
-    private Time duration;
+    private LocalTime duration;
 
     @Column(name = "image", nullable = false)
     private String image;

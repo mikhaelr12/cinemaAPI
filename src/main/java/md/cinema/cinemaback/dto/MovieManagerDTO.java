@@ -6,13 +6,14 @@ import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Time;
+import java.time.LocalTime;
 
 @Getter @Setter
 @Builder
-public class MovieAddDTO {
+public class MovieManagerDTO {
     private String title;
     private String description;
-    private Time duration;
+    private LocalTime duration;
     private Long genreId;
     private MultipartFile image;
 }
