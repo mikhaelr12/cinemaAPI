@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -49,7 +50,6 @@ public class BookingServiceImpl implements BookingService {
         }
         return reservedSeats;
     }
-
 
     private void validateNewBookingSeats(List<Long> newBookingSeats,
                                          List<Long> reservedSeats,
@@ -91,5 +91,24 @@ public class BookingServiceImpl implements BookingService {
                 .userId(user.getId())
                 .screening(screening.get())
                 .build());
+    }
+
+    @Override
+    public List<BookingDTO> getBookings(String jwt) {
+        User user = getUser(jwt);
+        List<Booking> bookings = bookingRepository.findByUserId(user.getId());
+        return bookings.stream().map(b -> BookingDTO.builder()
+                .seatIds(b.getSeats().stream().map(Seat::getId).collect(Collectors.toList()))
+                .totalPrice(b.getTotalPrice())
+                .screeningId(b.getScreening().getId())
+                .build()
+        ).collect(Collectors.toList());
+    }
+
+    @Override
+    public void cancelBooking(String jwt, Long id) {
+        User user = getUser(jwt);
+        List<Booking> bookings = bookingRepository.findByUserId(user.getId());
+        bookingRepository.delete(bookings.stream().filter(b -> b.getId().equals(id)).findFirst().get());
     }
 }
