@@ -2,6 +2,7 @@ package md.cinema.cinemaback.controller;
 
 import lombok.AllArgsConstructor;
 import md.cinema.cinemaback.dto.BookingDTO;
+import md.cinema.cinemaback.dto.SeatDTO;
 import md.cinema.cinemaback.service.BookingService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,5 +40,10 @@ public class BookingController {
         String jwt = getToken(token);
         bookingService.cancelBooking(jwt, id);
         return ResponseEntity.ok("Booking cancelled successfully");
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<List<SeatDTO>> getFreeSeats(@PathVariable Long id){
+        return ResponseEntity.ok(bookingService.getFreeSeats(id));
     }
 }

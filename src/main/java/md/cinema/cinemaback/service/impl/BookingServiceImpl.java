@@ -2,6 +2,7 @@ package md.cinema.cinemaback.service.impl;
 
 import lombok.AllArgsConstructor;
 import md.cinema.cinemaback.dto.BookingDTO;
+import md.cinema.cinemaback.dto.SeatDTO;
 import md.cinema.cinemaback.entity.*;
 import md.cinema.cinemaback.exception.ScreeningException;
 import md.cinema.cinemaback.exception.UserException;
@@ -110,5 +111,21 @@ public class BookingServiceImpl implements BookingService {
         User user = getUser(jwt);
         List<Booking> bookings = bookingRepository.findByUserId(user.getId());
         bookingRepository.delete(bookings.stream().filter(b -> b.getId().equals(id)).findFirst().get());
+    }
+
+    @Override
+    public List<SeatDTO> getFreeSeats(Long screeningId) {
+        List<Booking> bookings = bookingRepository.findByScreeningId(screeningId);
+        Screening screening = screeningRepository.findById(screeningId).get();
+        List<Long> reservedSeats = getReservedSeats(bookings);
+
+        List<Long> freeSeats = seatRepository.findAllByRoomId(screening.getRoom().getId()
+                ).stream().filter(seat -> !reservedSeats.contains(seat.getId()))
+                .map(Seat::getId)
+                .toList();
+
+        return List.of(SeatDTO.builder()
+                        .seats(freeSeats)
+                .build());
     }
 }
