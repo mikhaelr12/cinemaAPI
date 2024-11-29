@@ -15,4 +15,5 @@ public class ScreeningDTO {
     private Long roomId;
     private LocalTime screenTime;
     private LocalDate screenDate;
+    private Double price;
 }

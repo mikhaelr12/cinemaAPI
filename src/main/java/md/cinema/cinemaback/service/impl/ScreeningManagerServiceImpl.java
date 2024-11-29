@@ -59,6 +59,7 @@ public class ScreeningManagerServiceImpl implements ScreeningManagerService {
                 .room(room)
                 .screeningDate(screeningDTO.getScreenDate())
                 .screeningTime(screeningDTO.getScreenTime())
+                .price(screeningDTO.getPrice())
                 .build();
         screeningRepository.save(newScreening);
     }

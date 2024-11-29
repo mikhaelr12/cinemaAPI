@@ -28,9 +28,8 @@ public class ScreeningServiceImpl implements ScreeningService {
                         .roomId(s.getRoom().getId())
                         .screenTime(s.getScreeningTime())
                         .screenDate(s.getScreeningDate())
+                        .price(s.getPrice())
                         .build()
                 ).collect(Collectors.toList());
     }
-
-
 }
